@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sitecore.Commerce.Core;
 using Sitecore.Framework.Conditions;
 using System.Collections.Generic;
 
@@ -18,7 +19,7 @@ namespace Plugin.Plumber.Component.Decorator.Builders
         public PlumberConfigurationBuilder AddViewComponent<TViewComponent>() where TViewComponent : Sitecore.Commerce.Core.Component
         {
             this.services.Add(new ServiceDescriptor(typeof(ViewComponentDefinition), p => new ViewComponentDefinition<TViewComponent>(), ServiceLifetime.Singleton));
-            
+
             return this;
         }
     }

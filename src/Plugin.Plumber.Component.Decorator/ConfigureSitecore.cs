@@ -34,6 +34,12 @@ namespace Plugin.Plumber.Component
                             c.Add<RegisteredPluginBlock>())
                         );
 
+            services.Sitecore().Pipelines(config =>
+                    config.ConfigurePipeline<IStartEnvironmentPipeline>(c =>
+                       c.Add<InitializePlumberLocalization>().After<StartEnvironmentMinionsBlock>()
+                    ));
+
+
         }
     }
 }
