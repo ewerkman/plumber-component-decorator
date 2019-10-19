@@ -2,6 +2,7 @@
 {
     using Microsoft.Extensions.DependencyInjection;
     using Plugin.Plumber.Component.Sample.Components;
+    using Plugin.Plumber.Component.Sample.Entities;
     using Sitecore.Framework.Configuration;
 
     /// <summary>
@@ -18,7 +19,8 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.Plumber().ViewComponents(config =>
-                config.AddViewComponent<WarrantyComponent>()
+                config.AddEntityView<Wishlist>()
+                .AddViewComponent<WarrantyComponent>()
                 .AddViewComponent<NotesComponent>()
                 .AddViewComponent<SampleComponent>());
         }

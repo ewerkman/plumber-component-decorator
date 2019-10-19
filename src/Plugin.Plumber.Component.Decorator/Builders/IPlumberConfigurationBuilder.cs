@@ -2,6 +2,7 @@
 {
     public interface IPlumberConfigurationBuilder
     {
-        PlumberConfigurationBuilder AddViewComponent<TViewComponent>() where TViewComponent: Sitecore.Commerce.Core.Component;
+        IPlumberConfigurationBuilder AddEntityView<TEntity>() where TEntity : Sitecore.Commerce.Core.CommerceEntity;
+        IPlumberConfigurationBuilder AddViewComponent<TComponent>() where TComponent: Sitecore.Commerce.Core.Component;
     }
 }

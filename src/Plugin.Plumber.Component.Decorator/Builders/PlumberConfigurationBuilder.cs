@@ -16,7 +16,14 @@ namespace Plugin.Plumber.Component.Decorator.Builders
             this.services = services;
         }
 
-        public PlumberConfigurationBuilder AddViewComponent<TViewComponent>() where TViewComponent : Sitecore.Commerce.Core.Component
+        public IPlumberConfigurationBuilder AddEntityView<TEntity>() where TEntity : CommerceEntity
+        {
+            this.services.Add(new ServiceDescriptor(typeof(EntityViewDefinition), p => new EntityViewDefinition<TEntity>(), ServiceLifetime.Singleton));
+
+            return this;
+        }
+
+        public IPlumberConfigurationBuilder AddViewComponent<TViewComponent>() where TViewComponent : Sitecore.Commerce.Core.Component
         {
             this.services.Add(new ServiceDescriptor(typeof(ViewComponentDefinition), p => new ViewComponentDefinition<TViewComponent>(), ServiceLifetime.Singleton));
 

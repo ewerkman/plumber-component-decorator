@@ -3,18 +3,18 @@ using System;
 
 namespace Plugin.Plumber.Component.Decorator.Builders
 {
-    public class ViewComponentDefinition<TComponent> : ViewComponentDefinition where TComponent : Sitecore.Commerce.Core.Component
+    public class EntityViewDefinition<TEntity> : EntityViewDefinition where TEntity : Sitecore.Commerce.Core.CommerceEntity
     {   
-        public ViewComponentDefinition() : base(typeof(TComponent))
+        public EntityViewDefinition() : base(typeof(TEntity))
         {
         }
     }
 
-    public abstract class ViewComponentDefinition
+    public abstract class EntityViewDefinition
     {
         public Type Defines { get; }
 
-        public ViewComponentDefinition(Type defines)
+        public EntityViewDefinition(Type defines)
         {
             Condition.Requires<Type>(defines, nameof(defines)).IsNotNull<Type>();
             Defines = defines;
