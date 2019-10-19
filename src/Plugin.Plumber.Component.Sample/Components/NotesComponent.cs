@@ -15,7 +15,7 @@ namespace Plugin.Plumber.Component.Sample.Components
     [EntityView("Notes")]
     public class NotesComponent : Sitecore.Commerce.Core.Component
     {
-        [Property("External Notes", isRequired: true, showInList: true)]
+        [Property("External Notes", isRequired: true, showInList: true, localize:true)]
         public string ExternalNotes { get; set; } = string.Empty;
 
         [Property("Internal Notes", UIType:"RichText")]

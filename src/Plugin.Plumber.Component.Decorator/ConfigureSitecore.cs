@@ -33,13 +33,6 @@ namespace Plugin.Plumber.Component
                         config.ConfigurePipeline<IRunningPluginsPipeline>(c =>
                             c.Add<RegisteredPluginBlock>())
                         );
-
-            services.Sitecore().Pipelines(config =>
-                    config.ConfigurePipeline<IStartEnvironmentPipeline>(c =>
-                       c.Add<InitializePlumberLocalization>().After<StartEnvironmentMinionsBlock>()
-                    ));
-
-
         }
     }
 }

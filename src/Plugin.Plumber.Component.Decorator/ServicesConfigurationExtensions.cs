@@ -20,6 +20,7 @@ namespace Plugin.Plumber.Component
                         .ConfigurePipeline<IGetEntityViewPipeline>(c =>
                         {
                             c
+                            .Add<InitializeLocalizationPoliciesBlock>().After<PopulateEntityVersionBlock>()
                             .Add<GetComponentViewBlock>().After<GetSellableItemDetailsViewBlock>()
                             .Add<GetCatalogComponentConnectViewBlock>().After<GetComponentViewBlock>()
                             .Add<GetCategoryComponentConnectViewBlock>().After<GetCatalogComponentConnectViewBlock>()
@@ -36,7 +37,8 @@ namespace Plugin.Plumber.Component
                     config
                         .ConfigurePipeline<IPopulateEntityViewActionsPipeline>(c =>
                         {
-                            c.Add<PopulateComponentActionsBlock>().After<InitializeEntityViewActionsBlock>();
+                            c.Add<InitializeLocalizationPoliciesBlock>().After<InitializeEntityViewActionsBlock>()
+                             .Add<PopulateComponentActionsBlock>().After<InitializeEntityViewActionsBlock>();
                         })
             );
             return services;
@@ -49,7 +51,8 @@ namespace Plugin.Plumber.Component
                     config
                         .ConfigurePipeline<IDoActionPipeline>(c =>
                         {
-                            c.Add<DoActionEditComponentBlock>().After<ValidateEntityVersionBlock>()
+                            c.Add<InitializeLocalizationPoliciesBlock>().After<DoActionBlock>()
+                            .Add<DoActionEditComponentBlock>().After<ValidateEntityVersionBlock>()
                             .Add<DoActionAddValidationConstraintBlock>().Before<DoActionEditComponentBlock>();
                         })
             );

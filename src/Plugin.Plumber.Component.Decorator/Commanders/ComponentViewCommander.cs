@@ -1,24 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 using Plugin.Plumber.Component.Decorator.Attributes;
-using Plugin.Plumber.Component.Decorator.Attributes.SellableItem;
 using Plugin.Plumber.Component.Decorator.Builders;
-using Plugin.Plumber.Component.Decorator.Pipelines;
-using Plugin.Plumber.Component.Decorator.Pipelines.Arguments;
 using Sitecore.Commerce.Core;
 using Sitecore.Commerce.EntityViews;
-using Sitecore.Commerce.Plugin.Catalog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Plugin.Plumber.Component.Decorator.Commanders
 {
     /// <summary>
     ///     Helper class 
     /// </summary>
-    public class ComponentViewCommander : CommerceCommander
+    public class ComponentViewCommander : ViewCommander
     {
         public IServiceProvider ServiceProvider { get; }
 

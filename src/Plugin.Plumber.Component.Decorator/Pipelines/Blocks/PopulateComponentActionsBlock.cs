@@ -18,26 +18,24 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
     [PipelineDisplayName("PopulateComponentActionsBlock")]
     public class PopulateComponentActionsBlock : PipelineBlock<EntityView, EntityView, CommercePipelineExecutionContext>
     {
-        private readonly ViewCommander viewCommander;
-        private readonly ComponentViewCommander catalogSchemaCommander;        
+        private readonly ComponentViewCommander componentViewCommander;        
 
-        public PopulateComponentActionsBlock(ViewCommander viewCommander, ComponentViewCommander catalogSchemaCommander)
+        public PopulateComponentActionsBlock(ComponentViewCommander componentViewCommander)
         {
-            this.viewCommander = viewCommander;
-            this.catalogSchemaCommander = catalogSchemaCommander;
+            this.componentViewCommander = componentViewCommander;
         }
 
         public async override Task<EntityView> Run(EntityView arg, CommercePipelineExecutionContext context)
         {
             Condition.Requires(arg).IsNotNull($"{Name}: The argument cannot be null.");
 
-            var request = this.viewCommander.CurrentEntityViewArgument(context.CommerceContext);
+            var request = this.componentViewCommander.CurrentEntityViewArgument(context.CommerceContext);
 
             var commerceEntity = request?.Entity;
 
             if (commerceEntity != null)
             {
-                List<Type> applicableComponentTypes = this.catalogSchemaCommander.GetApplicableComponentTypes(commerceEntity, request.ItemId, context.CommerceContext);
+                List<Type> applicableComponentTypes = this.componentViewCommander.GetApplicableComponentTypes(commerceEntity, request.ItemId, context.CommerceContext);
 
                 var editableComponentType = applicableComponentTypes.SingleOrDefault(type => type.FullName == arg.Name);
 
