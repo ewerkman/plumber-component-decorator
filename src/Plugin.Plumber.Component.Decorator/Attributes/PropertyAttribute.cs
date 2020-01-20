@@ -9,12 +9,12 @@ namespace Plugin.Plumber.Component.Decorator.Attributes
     [System.AttributeUsage(System.AttributeTargets.Property)]
     public class PropertyAttribute : System.Attribute
     {
-        public string DisplayName { get; private set; }
-        public string UIType { get; private set; }
-        public bool IsReadOnly { get; private set; }
-        public bool IsRequired { get; private set; }
-        public bool ShowInList { get; private set; }
-        public bool Localize { get; private set; }
+        public string DisplayName { get;  }
+        public string UIType { get; }
+        public bool IsReadOnly { get;  }
+        public bool IsRequired { get; }
+        public bool ShowInList { get; }
+        public bool Localize { get; }
  
         public PropertyAttribute(string displayName = "", 
             string UIType = null,

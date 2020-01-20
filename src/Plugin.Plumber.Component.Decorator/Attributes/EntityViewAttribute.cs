@@ -13,10 +13,12 @@ namespace Plugin.Plumber.Component.Decorator.Attributes
     public class EntityViewAttribute : System.Attribute
     {
         public string ViewName { get; private set; }
-     
-        public EntityViewAttribute(string viewName)
+        public Icons Icon { get; private set; }
+
+        public EntityViewAttribute(string viewName, Icons icon = Icons.question)
         {
-            ViewName = viewName;
+            this.ViewName = viewName;
+            this.Icon = icon;
         }
     }
 }

@@ -3,7 +3,11 @@
     using Microsoft.Extensions.DependencyInjection;
     using Plugin.Plumber.Component.Sample.Components;
     using Plugin.Plumber.Component.Sample.Entities;
+    using Plugin.Plumber.Component.Sample.Pipelines.IInitializeEnvironmentPipeline;
+    using Plugin.Plumber.Component.Sample.ViewBuilders;
+    using Sitecore.Commerce.Core;  
     using Sitecore.Framework.Configuration;
+    using Sitecore.Framework.Pipelines.Definitions.Extensions;
 
     /// <summary>
     /// The configure sitecore class.
@@ -22,7 +26,15 @@
                 config.AddEntityView<Wishlist>()
                 .AddViewComponent<WarrantyComponent>()
                 .AddViewComponent<NotesComponent>()
-                .AddViewComponent<SampleComponent>());
+                .AddViewComponent<SampleComponent>()
+                .AddEntityViewBuilder<Wishlist, WishlistViewBuilder>());
+
+            services.Sitecore().Pipelines(config =>
+                    config.ConfigurePipeline<IInitializeEnvironmentPipeline>(c =>
+                       c.Add<InitializeEnvironmentBlock>().After<IValidateEnvironmentPipeline>()
+                    ));
+            ;
+
         }
     }
 }

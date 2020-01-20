@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Plugin.Plumber.Component.Decorator.Views;
 using Sitecore.Commerce.Core;
 using Sitecore.Framework.Conditions;
 using System.Collections.Generic;
@@ -25,8 +26,30 @@ namespace Plugin.Plumber.Component.Decorator.Builders
 
         public IPlumberConfigurationBuilder AddViewComponent<TViewComponent>() where TViewComponent : Sitecore.Commerce.Core.Component
         {
-            this.services.Add(new ServiceDescriptor(typeof(ViewComponentDefinition), p => new ViewComponentDefinition<TViewComponent>(), ServiceLifetime.Singleton));
+            this.services.Add(new ServiceDescriptor(typeof(ViewComponentDefinition), 
+                p => new ViewComponentDefinition<TViewComponent>(), 
+                ServiceLifetime.Singleton));
 
+            return this;
+        }
+
+        public IPlumberConfigurationBuilder AddCompnentViewBuilder<TComponent, TViewBuilder>()
+            where TComponent : Sitecore.Commerce.Core.Component
+            where TViewBuilder : IComponentViewBuilder
+        {
+            this.services.Add(new ServiceDescriptor(typeof(ComponentViewBuilderDefinition),
+                p => new ComponentViewBuilderDefinition<TComponent, TViewBuilder>(),
+                ServiceLifetime.Singleton));
+            return this;
+        }
+
+        public IPlumberConfigurationBuilder AddEntityViewBuilder<TCommerceEntity, TViewBuilder>()
+            where TCommerceEntity : CommerceEntity
+            where TViewBuilder : ICommerceEntityViewBuilder
+        {
+            this.services.Add(new ServiceDescriptor(typeof(ComponentViewBuilderDefinition),
+               p => new CommerceEntityViewBuilderDefinition<TCommerceEntity, TViewBuilder>(),
+               ServiceLifetime.Singleton));
             return this;
         }
     }

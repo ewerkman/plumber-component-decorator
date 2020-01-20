@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Plugin.Plumber.Component.Decorator.Pipelines;
 using Plugin.Plumber.Component.Decorator.Pipelines.Blocks;
+using Plugin.Plumber.Component.Decorator.Pipelines.Blocks.IDoActionPipeline;
+using Plugin.Plumber.Component.Decorator.Pipelines.Blocks.IGetEntityViewPipeline;
+using Plugin.Plumber.Component.Decorator.Pipelines.Blocks.IPopulateEntityViewActionsPipeline;
 using Plugin.Plumber.Component.Decorator.Pipelines.Blocks.ViewValidators;
 using Sitecore.Commerce.Core;
 using Sitecore.Commerce.EntityViews;
@@ -21,6 +24,8 @@ namespace Plugin.Plumber.Component
                         {
                             c
                             .Add<InitializeLocalizationPoliciesBlock>().After<PopulateEntityVersionBlock>()
+                            .Add<GetConfiguredEntitiesDashboardViewBlock>().After<PopulateEntityVersionBlock>()
+                            .Add<GetTableViewBlock>().After<GetConfiguredEntitiesDashboardViewBlock>()
                             .Add<GetComponentViewBlock>().After<GetSellableItemDetailsViewBlock>()
                             .Add<GetCatalogComponentConnectViewBlock>().After<GetComponentViewBlock>()
                             .Add<GetCategoryComponentConnectViewBlock>().After<GetCatalogComponentConnectViewBlock>()
@@ -38,7 +43,8 @@ namespace Plugin.Plumber.Component
                         .ConfigurePipeline<IPopulateEntityViewActionsPipeline>(c =>
                         {
                             c.Add<InitializeLocalizationPoliciesBlock>().After<InitializeEntityViewActionsBlock>()
-                             .Add<PopulateComponentActionsBlock>().After<InitializeEntityViewActionsBlock>();
+                             .Add<PopulateComponentActionsBlock>().After<InitializeEntityViewActionsBlock>()
+                             .Add<PopulateDashboardActionsBlock>().After<PopulateComponentActionsBlock>();
                         })
             );
             return services;
@@ -52,6 +58,7 @@ namespace Plugin.Plumber.Component
                         .ConfigurePipeline<IDoActionPipeline>(c =>
                         {
                             c.Add<InitializeLocalizationPoliciesBlock>().After<DoActionBlock>()
+                            .Add<DoActionPaginateTableViewBlock>().After<InitializeLocalizationPoliciesBlock>()
                             .Add<DoActionEditComponentBlock>().After<ValidateEntityVersionBlock>()
                             .Add<DoActionAddValidationConstraintBlock>().Before<DoActionEditComponentBlock>();
                         })

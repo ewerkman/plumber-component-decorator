@@ -97,7 +97,8 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
                             DisplayName = entityViewAttribute?.ViewName ?? componentType.Name,
                             EntityId = entityView.EntityId,
                             ItemId = entityView.ItemId,
-                            EntityVersion = entityView.EntityVersion
+                            EntityVersion = entityView.EntityVersion,
+                            Icon = entityViewAttribute.Icon.ToString()
                         };
 
                         entityView.ChildViews.Add(view);

@@ -12,18 +12,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bogus" Version="28.4.1" />
     <PackageReference Include="Sitecore.Commerce.Core">
       <Version>2.4.37</Version>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="2.4.21" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="2.4.11" />
     <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="2.4.11" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Views" Version="2.4.37" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ConfigureServiceApiBlock.cs" />
     <Content Include="ConfigureSitecore.cs" />
-    <Content Include="Components\SampleComponent.cs" />
+    <Folder Include="Commands\" />
+    <Folder Include="Components\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Models\" />
+    <Folder Include="Pipelines\Arguments\" />
+    <Folder Include="Policies\" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -37,9 +42,5 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
     <Reference Include="System.Transactions" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Plugin.Plumber.Component.Decorator\Plugin.Plumber.Component.Decorator.csproj" />
   </ItemGroup>
 </Project>

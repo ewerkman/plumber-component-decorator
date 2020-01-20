@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Plugin.Plumber.Component.Decorator.Pipelines.Blocks;
+using Plugin.Plumber.Component.Decorator.Pipelines.Blocks.IBizFxNavigationPipeline;
 using Sitecore.Commerce.Core;
+using Sitecore.Commerce.Plugin.BusinessUsers;
+using Sitecore.Commerce.Plugin.Composer;
 using Sitecore.Framework.Configuration;
 using Sitecore.Framework.Pipelines.Definitions.Extensions;
 using System.Reflection;
@@ -31,8 +33,14 @@ namespace Plugin.Plumber.Component
                 .AddGetApplicableViewConditionsPipeline()
                 .Pipelines(config =>
                         config.ConfigurePipeline<IRunningPluginsPipeline>(c =>
-                            c.Add<RegisteredPluginBlock>())
+                            c.Add<Decorator.Pipelines.Blocks.RegisteredPluginBlock>())
                         );
+
+            services.Sitecore().Pipelines(config =>
+                    config.ConfigurePipeline<IBizFxNavigationPipeline>(c =>
+                       c.Add<GetConfiguredEntitiesNavigationBlock>().After<GetComposerNavigationViewBlock>()
+                    ));
+
         }
     }
 }
