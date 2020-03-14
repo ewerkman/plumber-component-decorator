@@ -54,7 +54,7 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
             }
 
             var commerceEntity = request.Entity;
-            var components = commerceEntity.Components;
+            var components = commerceEntity.EntityComponents;
 
             // Get a list of all the component types that have been registered 
             var viewableComponentTypes = this.commander.GetViewableComponentTypes(commerceEntity, request.ItemId, context.CommerceContext);
@@ -64,7 +64,7 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
                 var variation = ((SellableItem)commerceEntity).GetVariation(entityView.ItemId);
                 if (variation != null)
                 {
-                    components = variation.ChildComponents;
+                    components = variation.ChildComponents.ToList();
                 }
             }
 
@@ -73,7 +73,7 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
             return entityView;
         }
 
-        private static void CreateEntityViews(EntityView entityView, EntityViewConditionsArgument result, IList<Sitecore.Commerce.Core.Component> components, IEnumerable<Type> viewableComponentTypes)
+        private static void CreateEntityViews(EntityView entityView, EntityViewConditionsArgument result, IReadOnlyList<Sitecore.Commerce.Core.Component> components, IEnumerable<Type> viewableComponentTypes)
         {
             var targetView = entityView;
 

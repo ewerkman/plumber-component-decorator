@@ -4,7 +4,7 @@
     <Description>Make Sitecore Commerce components easily viewable and editable in Sitecore Commerce Business Tools by annotating them with attributes. </Description>
     <VersionPrefix>1.0.0</VersionPrefix>
     <Authors>Erwin Werkman</Authors>    
-    <TargetFramework>net462</TargetFramework>
+    <TargetFramework>net471</TargetFramework>
     <PackageTags>$(PackageTags);Commerce;Plugin</PackageTags>
     <PackageIconUrl>https://plumber-sc.com/assets/images/plumber-logo.svg</PackageIconUrl>
     <PackageProjectUrl>https://github.com/plumber-sc/plumber-component-decorator</PackageProjectUrl>
@@ -15,25 +15,25 @@
 
   <ItemGroup>
     <PackageReference Include="Sitecore.Commerce.Core">
-      <Version>2.2.29</Version>
+      <Version>4.0.72</Version>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="2.2.46">
+    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="4.0.61">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Customers" Version="2.2.10">
+    <PackageReference Include="Sitecore.Commerce.Plugin.Customers" Version="4.0.16">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="2.2.26" >
+    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="4.0.26">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="2.2.22" >
+    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="4.0.27">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Pricing" Version="2.2.12" >
+    <PackageReference Include="Sitecore.Commerce.Plugin.Pricing" Version="4.0.13">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Promotions" Version="2.2.3">
+    <PackageReference Include="Sitecore.Commerce.Plugin.Promotions" Version="4.0.14">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
@@ -47,11 +47,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\net462\Plugin.Plumber.Component.Deorator.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\net471\Plugin.Plumber.Component.Deorator.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net471' ">
     <Reference Include="System.Transactions" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>

@@ -11,6 +11,14 @@
     <description>Make Sitecore Commerce components easily viewable and editable in Sitecore Commerce Business Tools by annotating them with attributes.</description>
     <tags>sitecore commerce components</tags>
     <dependencies>
+      <dependency id="Sitecore.Commerce.Core" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Customers" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Views" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Catalog" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Inventory" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Orders" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Pricing" version="4.0.0" />
+      <dependency id="Sitecore.Commerce.Plugin.Promotions" version="4.0.0" />
     </dependencies>
   </metadata>
 </package>

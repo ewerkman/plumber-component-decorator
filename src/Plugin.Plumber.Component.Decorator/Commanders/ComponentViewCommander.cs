@@ -54,7 +54,7 @@ namespace Plugin.Plumber.Component.Decorator.Commanders
         /// <returns></returns>
         public List<Type> GetViewableComponentTypes(CommerceEntity commerceEntity, string itemId, CommerceContext context)
         {
-            var knownComponentTypesInEntity = GetAllComponentTypes().Where(type => commerceEntity.Components.Any(comp => type.IsInstanceOfType(comp)));
+            var knownComponentTypesInEntity = GetAllComponentTypes().Where(type => commerceEntity.EntityComponents.Any(comp => type.IsInstanceOfType(comp)));
 
             var applicableComponentTypes = GetApplicableComponentTypes(commerceEntity, itemId, context);
 
@@ -103,11 +103,11 @@ namespace Plugin.Plumber.Component.Decorator.Commanders
         /// <returns></returns>
         public Sitecore.Commerce.Core.Component GetEditedComponent(CommerceEntity commerceEntity, Type editedComponentType)
         {
-            Sitecore.Commerce.Core.Component component = commerceEntity.Components.SingleOrDefault(comp => comp.GetType() == editedComponentType);
+            Sitecore.Commerce.Core.Component component = commerceEntity.EntityComponents.SingleOrDefault(comp => comp.GetType() == editedComponentType);
             if (component == null)
             {
                 component = (Sitecore.Commerce.Core.Component)Activator.CreateInstance(editedComponentType);
-                commerceEntity.Components.Add(component);
+                commerceEntity.AddComponents(component);
             }
 
             return component;
