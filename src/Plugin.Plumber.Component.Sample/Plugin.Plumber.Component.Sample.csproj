@@ -14,11 +14,11 @@
   <ItemGroup>
     <PackageReference Include="Bogus" Version="28.4.1" />
     <PackageReference Include="Sitecore.Commerce.Core">
-      <Version>4.0.72</Version>
+      <Version>5.0.42</Version>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="4.0.61" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="4.0.26" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="4.0.27" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="5.0.43" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="5.0.18" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="5.0.20" />
   </ItemGroup>
 
   <ItemGroup>
