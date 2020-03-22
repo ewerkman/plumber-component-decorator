@@ -1,26 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Description>Plumber for Sitecore Commerce Catalog plugin</Description>
+    <Title>Plumber Component Decorator for Sitecore Commerce</Title>
+    <Description>Make Sitecore Commerce components easily viewable and editable in Sitecore Commerce Business Tools by annotating them with attributes. </Description>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <Authors>Plumber-SC</Authors>
-    <TargetFramework>net462</TargetFramework>
+    <Authors>Erwin Werkman</Authors>    
+    <TargetFramework>net471</TargetFramework>
     <PackageTags>$(PackageTags);Commerce;Plugin</PackageTags>
-    <PackageIconUrl>http://plumber-sc.com/images/plumber-logo.svg</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/plumber-sc/plumber-catalog</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/plumber-sc/plumber-catalog/blob/develop/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://plumber-sc.com/assets/images/plumber-logo.svg</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/plumber-sc/plumber-component-decorator</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/plumber-sc/plumber-component-decorator/blob/develop/LICENSE</PackageLicenseUrl>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <NuspecProperties>version=$(Version)</NuspecProperties>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Sitecore.Commerce.Core">
-      <Version>2.4.37</Version>
+      <Version>4.0.72</Version>
     </PackageReference>
-    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="2.4.21" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Customers" Version="2.4.5" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="2.4.11" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="2.4.11" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Pricing" Version="2.4.4" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Promotions" Version="2.4.5" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="4.0.61">
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Plugin.Customers" Version="4.0.16">
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Plugin.Inventory" Version="4.0.26">
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="4.0.27">
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Plugin.Pricing" Version="4.0.13">
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Plugin.Promotions" Version="4.0.14">
+    </PackageReference>
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -32,11 +40,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\net462\Plugin.Plumber.Component.Deorator.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\net471\Plugin.Plumber.Component.Deorator.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net471' ">
     <Reference Include="System.Transactions" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>

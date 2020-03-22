@@ -46,13 +46,13 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
                 return entityView;
             }
 
-            var components = commerceEntity.Components;
+            var components = commerceEntity.EntityComponents;
             if(!string.IsNullOrWhiteSpace(entityView.ItemId) && commerceEntity is SellableItem)
             {
                 var variation = ((SellableItem)commerceEntity).GetVariation(entityView.ItemId);
                 if (variation != null)
                 {
-                    components = variation.ChildComponents;
+                    components = variation.ChildComponents.ToList();
                 }
             }
 
@@ -63,7 +63,7 @@ namespace Plugin.Plumber.Component.Decorator.Pipelines.Blocks
             if(editedComponent == null)
             {
                 editedComponent = (Sitecore.Commerce.Core.Component)Activator.CreateInstance(editedComponentType);
-                components.Add(editedComponent);
+                commerceEntity.AddComponents(editedComponent);
             }
       
             if (editedComponent != null)
